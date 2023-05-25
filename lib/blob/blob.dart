@@ -10,6 +10,8 @@ class Blob {
 }
 
 class AnimatedBlobsFluttering extends StatefulWidget {
+  const AnimatedBlobsFluttering({super.key});
+
   @override
   _AnimatedBlobsFlutteringState createState() =>
       _AnimatedBlobsFlutteringState();
@@ -75,7 +77,7 @@ class _AnimatedBlobsFlutteringState extends State<AnimatedBlobsFluttering>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Animated Blobs Fluttering'),
+        title: const Text('Animated Blobs Fluttering'),
       ),
       body: AnimatedBuilder(
         animation: _animationController,

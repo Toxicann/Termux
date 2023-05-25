@@ -20,7 +20,9 @@ class KThemes {
     ),
     inputDecorationTheme: const InputDecorationTheme(
       border: InputBorder.none,
-      
+      isDense: true,
+      contentPadding: EdgeInsets.symmetric(vertical: 0.0),
+      isCollapsed: true,
     ),
   );
 }
