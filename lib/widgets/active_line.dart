@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/controller/termux.controller.dart';
 
 import 'hostname.dart';
+import 'inactive_line.dart';
 
 class ActiveLine extends ConsumerWidget {
-  ActiveLine({
+  const ActiveLine({
     super.key,
     required TextEditingController textFieldController,
   }) : _textFieldController = textFieldController;
@@ -31,32 +32,6 @@ class ActiveLine extends ConsumerWidget {
                   );
               _textFieldController.clear();
             },
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class InactiveLine extends StatelessWidget {
-  const InactiveLine({
-    super.key,
-    required String lastCommand,
-  }) : _lastCommand = lastCommand;
-
-  final String _lastCommand;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const HostName(),
-        Expanded(
-          child: Text(
-            _lastCommand,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Theme.of(context).primaryColor,
-                ),
           ),
         ),
       ],
