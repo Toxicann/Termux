@@ -5,8 +5,8 @@ class HostName extends StatelessWidget {
     super.key,
   });
 
-  final String name = "root";
-  final String host = "Desktop";
+  final String name = "guest";
+  final String host = "Toxicann.com";
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class HostName extends StatelessWidget {
       text: TextSpan(
           text: name,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
+                color: Theme.of(context).highlightColor,
               ),
           children: [
             TextSpan(
@@ -24,13 +24,13 @@ class HostName extends StatelessWidget {
                   ),
             ),
             TextSpan(
-              text: "$host:",
+              text: host,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: Theme.of(context).highlightColor,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
             ),
             TextSpan(
-              text: "\$ ~ ",
+              text: ":~\$ ",
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: Theme.of(context).primaryColor,
                   ),

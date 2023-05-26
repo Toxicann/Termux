@@ -1,0 +1,14 @@
+{
+    "exec_resp": {
+        "help": [
+            {
+                "command": "clear",
+                "function": "- clear the terminal"
+            },
+            {
+                "command": "help",
+                "function": "- list all available commands"
+            }
+        ]
+    }
+}

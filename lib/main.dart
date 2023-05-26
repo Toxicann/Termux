@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
             color: Theme.of(context).colorScheme.secondary,
           ),
         ),
-        child: Termux(),
+        child: const Termux(),
       ),
     );
   }

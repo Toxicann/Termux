@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/shared/colors.dart';
 
 class KThemes {
   static final primaryTheme = ThemeData(
     useMaterial3: true,
-    primaryColor: const Color(0xfff6f6f6),
+    primaryColor: KColor.primaryColor,
     colorScheme: ColorScheme.fromSwatch(
-      accentColor: const Color(0xffff8e6e),
-      backgroundColor: const Color(0xff515070),
+      accentColor: KColor.accentColor,
+      backgroundColor: KColor.backgroundColor,
     ),
-    highlightColor: const Color(0xffffbb91),
+    highlightColor: KColor.secondaryColor,
     textTheme: TextTheme(
       bodyMedium: GoogleFonts.sourceCodePro(
         fontWeight: FontWeight.w500,
+        fontSize: 16.0,
+        color: KColor.primaryColor,
       ),
     ),
     textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Color(0xfff6f6f6),
+      cursorColor: KColor.primaryColor,
     ),
     inputDecorationTheme: const InputDecorationTheme(
       border: InputBorder.none,

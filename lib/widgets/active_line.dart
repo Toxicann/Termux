@@ -23,13 +23,14 @@ class ActiveLine extends ConsumerWidget {
             onTapOutside: (event) => {},
             controller: _textFieldController,
             autofocus: true,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Theme.of(context).primaryColor,
-                ),
+            style: Theme.of(context).textTheme.bodyMedium,
             onEditingComplete: () {
               ref.read(termuxProvider).addHistory(
                     InactiveLine(lastCommand: _textFieldController.text),
                   );
+              if (_textFieldController.text.isNotEmpty) {
+                ref.read(termuxProvider).exec(_textFieldController.text);
+              }
               _textFieldController.clear();
             },
           ),

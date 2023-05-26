@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'hostname.dart';
@@ -19,9 +18,7 @@ class InactiveLine extends StatelessWidget {
         Expanded(
           child: Text(
             _lastCommand,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Theme.of(context).primaryColor,
-                ),
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),
       ],

@@ -43,6 +43,8 @@ class _TermuxState extends ConsumerState<Termux> {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: ListView.builder(
+        primary: true,
+        physics: const ScrollPhysics(),
         itemCount: _termuxProvider.commandHistory.length,
         itemBuilder: (context, index) => _termuxProvider.commandHistory[index],
       ),
