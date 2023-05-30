@@ -42,10 +42,13 @@ class RichifyTextResp extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
-      child: ListView.builder(
+      child: ListView.separated(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: response.length,
+        separatorBuilder: (context, index) => const SizedBox(
+          height: 2.0,
+        ),
         itemBuilder: (context, index) {
           List keys = response[index].keys.toList();
           styleText(
