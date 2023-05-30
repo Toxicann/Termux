@@ -2,12 +2,35 @@
     "exec_resp": {
         "help": [
             {
+                "command": "about",
+                "function": "- about me"
+            },
+            {
                 "command": "clear",
                 "function": "- clear the terminal"
             },
             {
                 "command": "help",
                 "function": "- list all available commands"
+            }
+        ],
+        "about": [
+            {
+                "text": "Hi, My name is Anush Karki.",
+                "style_words": [
+                    "Anush",
+                    "Karki."
+                ]
+            },
+            {
+                "text": "I am a Flutter Developer based on Kathmandu, Nepal.",
+                "style_words": [
+                    "Kathmandu,",
+                    "Nepal."
+                ]
+            },
+            {
+                "text": "Solving challenges, be it in games or software development is what I am passionate about."
             }
         ]
     }

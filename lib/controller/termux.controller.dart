@@ -1,17 +1,20 @@
 import 'dart:convert';
 
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/widgets/exec_response.dart';
+
+import '../widgets/exec_widgets/exec_response.dart';
+import '../widgets/exec_widgets/richify_text_response.dart';
+import '../widgets/exec_widgets/tabular_response.dart';
 
 final termuxProvider =
     ChangeNotifierProvider.autoDispose<TermuxNotifier>((ref) {
   return TermuxNotifier();
 });
 
-enum Commands { clear, help }
+enum Commands { clear, help, about }
 
 class TermuxNotifier extends ChangeNotifier {
   final List<Widget> _commandHistory = [];
@@ -68,6 +71,13 @@ class TermuxNotifier extends ChangeNotifier {
         _commandHistory.add(
           TabularResponse(
             response: _jsonData['exec_resp']["help"],
+          ),
+        );
+        break;
+      case Commands.about:
+        _commandHistory.add(
+          RichifyTextResp(
+            response: _jsonData['exec_resp']["about"],
           ),
         );
         break;
