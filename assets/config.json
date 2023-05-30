@@ -1,4 +1,23 @@
 {
+    "usage": {
+        "about": [
+            "Usage: about"
+        ],
+        "clear": [
+            "Usage: clear"
+        ],
+        "help": [
+            "Usage: help"
+        ],
+        "socials": [
+            "Usage: socials",
+            "To open a link: Type Socials --go <name>",
+            "Example: socials go linkedin"
+        ],
+        "welcome": [
+            "Usage: welcome"
+        ]
+    },
     "exec_resp": {
         "help": [
             {

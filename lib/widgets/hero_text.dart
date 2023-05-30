@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../shared/string.dart';
 
 class HeroText extends StatelessWidget {
-  HeroText({super.key});
+  const HeroText({super.key});
 
   @override
   Widget build(BuildContext context) {

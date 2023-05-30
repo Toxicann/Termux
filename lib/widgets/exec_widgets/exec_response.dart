@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ExecResponse extends StatelessWidget {
   ExecResponse({super.key, required this.response});
 
-  List<String> response;
+  List<dynamic> response;
 
   @override
   Widget build(BuildContext context) {
