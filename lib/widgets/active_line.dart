@@ -25,11 +25,12 @@ class ActiveLine extends ConsumerWidget {
             autofocus: true,
             style: Theme.of(context).textTheme.bodyMedium,
             onEditingComplete: () {
+              var command = _textFieldController.text.trim();
               ref.read(termuxProvider).addHistory(
-                    InactiveLine(lastCommand: _textFieldController.text),
+                    InactiveLine(lastCommand: command),
                   );
-              if (_textFieldController.text.isNotEmpty) {
-                ref.read(termuxProvider).exec(_textFieldController.text);
+              if (command.isNotEmpty) {
+                ref.read(termuxProvider).exec(command);
               }
               _textFieldController.clear();
             },

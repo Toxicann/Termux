@@ -12,6 +12,14 @@
             {
                 "command": "help",
                 "function": "- list all available commands"
+            },
+            {
+                "command": "socials",
+                "function": "- check out my socials"
+            },
+            {
+                "command": "welcome",
+                "function": "- display welcome screen"
             }
         ],
         "about": [
@@ -31,6 +39,31 @@
             },
             {
                 "text": "Solving challenges, be it in games or software development is what I am passionate about."
+            }
+        ],
+        "welcome": [
+            {
+                "text": "Welcome to my terminal portfolio."
+            },
+            {
+                "text": "For a list of available commands, type help",
+                "style_words": [
+                    "help"
+                ]
+            }
+        ],
+        "socials": [
+            {
+                "command": "Github",
+                "function": "- github.com/toxicann"
+            },
+            {
+                "command": "LinkedIn",
+                "function": "- linkedin.com/in/karkeea"
+            },
+            {
+                "command": "Instagram",
+                "function": "- instagram.com/karkee_anushz"
             }
         ]
     }

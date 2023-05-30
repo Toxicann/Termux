@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 class RichifyTextResp extends StatelessWidget {
   RichifyTextResp({super.key, required this.response});
   List response;
-  List<TextSpan> formattedTextList = [];
 
   @override
   Widget build(BuildContext context) {
     styleText({required String text, dynamic style}) {
-      formattedTextList.clear();
+      List<TextSpan> formattedTextList = [];
 
       if (style == null) {
         formattedTextList.add(TextSpan(text: text));
-        return;
+
+        return formattedTextList;
       }
 
       style as List;
@@ -37,7 +37,8 @@ class RichifyTextResp extends StatelessWidget {
           formattedTextList.add(const TextSpan(text: " "));
         }
       }
-      return;
+
+      return formattedTextList;
     }
 
     return Padding(
@@ -51,14 +52,14 @@ class RichifyTextResp extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           List keys = response[index].keys.toList();
-          styleText(
+          dynamic displayText = styleText(
             text: response[index][keys[0]],
             style: keys.length > 1 ? response[index][keys[1]] : null,
           );
 
           return RichText(
             text: TextSpan(
-              children: formattedTextList,
+              children: displayText,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           );
