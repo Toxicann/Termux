@@ -5,6 +5,7 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/shared/url_helper.dart';
 
 import '../shared/string.dart';
 import '../widgets/exec_widgets/exec_response.dart';
@@ -23,6 +24,7 @@ enum Commands {
   about,
   welcome,
   socials,
+  contact,
 }
 
 enum Flags {
@@ -73,7 +75,9 @@ class TermuxNotifier extends ChangeNotifier {
 
       if (!isFlag(commandList[1])) throw "unidentified flag";
 
-      runCommand(enumCommand, flag: commandList[1]);
+      runCommand(enumCommand,
+          flag: commandList[1],
+          number: commandList.length > 2 ? commandList[2] : null);
     } catch (e) {
       _commandHistory.add(
         ExecResponse(
@@ -88,12 +92,17 @@ class TermuxNotifier extends ChangeNotifier {
     }
   }
 
-  runCommand(Commands command, {String? flag}) {
+  runCommand(Commands command, {String? flag, String? number}) {
     Flags? flagCommand;
+    int? num;
+
     if (flag != null) {
       try {
         flag = flag.replaceAll('--', '');
         flagCommand = EnumToString.fromString(Flags.values, flag)!;
+        if (number != null) {
+          num = int.parse(number);
+        }
       } catch (e) {
         _commandHistory.add(
           ExecResponse(
@@ -113,7 +122,7 @@ class TermuxNotifier extends ChangeNotifier {
     }
 
     _allowFlags(List<Flags> flagList, Flags? flag, Commands command) {
-      if (!flagList.contains(flag)) {
+      if (flag != null && !flagList.contains(flag)) {
         throw command.name;
       }
     }
@@ -149,6 +158,20 @@ class TermuxNotifier extends ChangeNotifier {
             ),
           );
           break;
+        case Commands.contact:
+          _disallowFlag(command, flagCommand);
+          _commandHistory.add(
+            RichifyTextResp(
+              response: _jsonData['exec_resp']["contact"]["details"],
+            ),
+          );
+          _commandHistory.add(
+            TabularResponse(
+              response: _jsonData['exec_resp']["contact"]["info"],
+            ),
+          );
+
+          break;
         case Commands.socials:
           _allowFlags([Flags.go], flagCommand, command);
           if (flagCommand == null) {
@@ -161,6 +184,26 @@ class TermuxNotifier extends ChangeNotifier {
               ExecResponse(response: _jsonData['usage']["socials"]),
             );
           }
+          switch (flagCommand) {
+            case Flags.go:
+              if (num == null) throw command.name;
+
+              if (num == 1) {
+                UrlHelper.urlLauncher(
+                    _jsonData['exec_resp']["socials"][num - 1]["function"]);
+              } else if (num == 2) {
+                UrlHelper.urlLauncher(
+                    _jsonData['exec_resp']["socials"][num - 1]["function"]);
+              } else if (num == 3) {
+                UrlHelper.urlLauncher(
+                    _jsonData['exec_resp']["socials"][num - 1]["function"]);
+              } else {
+                throw command.name;
+              }
+              break;
+            default:
+          }
+
           break;
 
         default:

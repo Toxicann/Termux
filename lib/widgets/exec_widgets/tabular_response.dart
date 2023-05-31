@@ -33,7 +33,7 @@ class TabularResponse extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Table(
         columnWidths: const {
-          0: FixedColumnWidth(100.0),
+          0: FixedColumnWidth(135.0),
           1: FlexColumnWidth(1.0),
         },
         children: tableRow,

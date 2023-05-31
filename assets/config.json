@@ -6,13 +6,16 @@
         "clear": [
             "Usage: clear"
         ],
+        "contact": [
+            "Usage: contact"
+        ],
         "help": [
             "Usage: help"
         ],
         "socials": [
             "Usage: socials",
-            "To open a link: Type Socials --go <name>",
-            "Example: socials go linkedin"
+            "To open a link: Type socials --go <number>",
+            "Example: socials --go 1"
         ],
         "welcome": [
             "Usage: welcome"
@@ -27,6 +30,10 @@
             {
                 "command": "clear",
                 "function": "- clear the terminal"
+            },
+            {
+                "command": "contact",
+                "function": "- my contact details"
             },
             {
                 "command": "help",
@@ -73,17 +80,53 @@
         ],
         "socials": [
             {
-                "command": "Github",
+                "command": "1. Github",
                 "function": "- github.com/toxicann"
             },
             {
-                "command": "LinkedIn",
+                "command": "2. LinkedIn",
                 "function": "- linkedin.com/in/karkeea"
             },
             {
-                "command": "Instagram",
+                "command": "3. Instagram",
                 "function": "- instagram.com/karkee_anushz"
             }
-        ]
+        ],
+        "contact": {
+            "info": [
+                {
+                    "command": "Email",
+                    "function": "anushkarki007@gmail.com"
+                },
+                {
+                    "command": "Phone No.",
+                    "function": "+977 986-214-8880"
+                }
+            ],
+            "details": [
+                {
+                    "text": "Have any questions or ideas?",
+                    "style_words": [
+                        "ideas",
+                        "questions"
+                    ]
+                },
+                {
+                    "text": "Feel free to reach out! Let's chat, bring your ideas to life",
+                    "style_words": [
+                        "Let's",
+                        "chat,"
+                    ]
+                },
+                {
+                    "text": "Contact me now, and let's get started!",
+                    "style_words": [
+                        "Contact",
+                        "me",
+                        "now"
+                    ]
+                }
+            ]
+        }
     }
 }
