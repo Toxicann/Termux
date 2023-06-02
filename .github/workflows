@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.7.7"
+          channel: 'stable'
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,4 +29,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./build/web
