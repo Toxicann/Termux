@@ -81,6 +81,9 @@
                 "text": "Welcome to my terminal portfolio."
             },
             {
+                "text": "This is still in build phase. Feel free to share your ideas."
+            },
+            {
                 "text": "For a list of available commands, type help",
                 "style_words": [
                     "help"
