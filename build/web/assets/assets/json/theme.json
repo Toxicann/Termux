@@ -1,0 +1,20 @@
+{
+    "dark": {
+        "backgroundColor": "#323232",
+        "primaryColor": "#f7f7f7",
+        "secondaryColor": "#a5c260",
+        "accentColor": "#e1e48b"
+    },
+    "ubuntu": {
+        "backgroundColor": "#2d0922",
+        "primaryColor": "#ffffff",
+        "secondaryColor": "#80d932",
+        "accentColor": "#80d932"
+    },
+    "matrix": {
+        "backgroundColor": "#000000",
+        "primaryColor": "#01ff00",
+        "secondaryColor": "#e5e500",
+        "accentColor": "#04a500"
+    }
+}
