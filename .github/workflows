@@ -10,6 +10,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
+
+      - name: Set permissions
+        run: icacls _site /grant:r Everyone:(OI)(CI)RX
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
