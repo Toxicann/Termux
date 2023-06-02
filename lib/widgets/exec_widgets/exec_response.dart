@@ -15,7 +15,10 @@ class ExecResponse extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) => Text(
           response[index],
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .copyWith(color: Theme.of(context).primaryColor),
         ),
       ),
     );

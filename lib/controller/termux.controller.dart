@@ -37,7 +37,7 @@ enum Flags {
   set,
 }
 
-enum Themes { dark, light }
+enum Themes { dark, matrix, ubuntu }
 
 class TermuxNotifier extends ChangeNotifier {
   final List<Widget> _commandHistory = [];

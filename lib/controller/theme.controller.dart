@@ -30,17 +30,8 @@ class ThemeNotifier extends ChangeNotifier {
   }
 
   changeTheme(Themes theme) {
-    switch (theme) {
-      case Themes.dark:
-        themeColor = KColor.fromJson(_jsonData[theme.name]);
+    themeColor = KColor.fromJson(_jsonData[theme.name]);
 
-        break;
-      case Themes.light:
-        themeColor = KColor.fromJson(_jsonData[theme.name]);
-
-        break;
-      default:
-    }
     notifyListeners();
   }
 }

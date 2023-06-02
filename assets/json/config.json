@@ -103,10 +103,11 @@
         ],
         "theme": [
             {
-                "text": "dark light",
+                "text": "dark ubuntu matrix",
                 "style_words": [
                     "dark",
-                    "light"
+                    "ubuntu",
+                    "matrix"
                 ]
             }
         ],
