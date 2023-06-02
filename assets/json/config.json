@@ -17,6 +17,11 @@
             "To open a link: Type socials --go <number>",
             "Example: socials --go 1"
         ],
+        "theme": [
+            "Usage: theme",
+            "To set theme: Type theme --set <name>",
+            "Example: theme --set dark"
+        ],
         "welcome": [
             "Usage: welcome"
         ]
@@ -42,6 +47,10 @@
             {
                 "command": "socials",
                 "function": "- check out my socials"
+            },
+            {
+                "command": "theme",
+                "function": "- set theme"
             },
             {
                 "command": "welcome",
@@ -90,6 +99,15 @@
             {
                 "command": "3. Instagram",
                 "function": "- instagram.com/karkee_anushz"
+            }
+        ],
+        "theme": [
+            {
+                "text": "dark light",
+                "style_words": [
+                    "dark",
+                    "light"
+                ]
             }
         ],
         "contact": {

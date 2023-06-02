@@ -1,0 +1,14 @@
+{
+    "dark": {
+        "backgroundColor": "#323232",
+        "primaryColor": "#f7f7f7",
+        "secondaryColor": "#a5c260",
+        "accentColor": "#e1e48b"
+    },
+    "light": {
+        "backgroundColor": "#ffffff",
+        "primaryColor": "#000000",
+        "secondaryColor": "#a5c260",
+        "accentColor": "#e1e48b"
+    }
+}

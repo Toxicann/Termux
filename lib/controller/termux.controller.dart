@@ -5,6 +5,7 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/controller/theme.controller.dart';
 import 'package:portfolio/shared/url_helper.dart';
 
 import '../shared/string.dart';
@@ -13,9 +14,11 @@ import '../widgets/exec_widgets/richify_text_response.dart';
 import '../widgets/exec_widgets/tabular_response.dart';
 import '../widgets/hero_text.dart';
 
+// final themeProd = ProviderContainer();
+
 final termuxProvider =
     ChangeNotifierProvider.autoDispose<TermuxNotifier>((ref) {
-  return TermuxNotifier();
+  return TermuxNotifier(themeContainer: themeProd);
 });
 
 enum Commands {
@@ -25,20 +28,28 @@ enum Commands {
   welcome,
   socials,
   contact,
+  theme,
 }
 
 enum Flags {
   go,
   help,
+  set,
 }
+
+enum Themes { dark, light }
 
 class TermuxNotifier extends ChangeNotifier {
   final List<Widget> _commandHistory = [];
   final List<Widget> _activeWidget = [];
-  late final _jsonData;
+  late final Map<String, dynamic> _jsonData;
 
   List<Widget> get commandHistory => [..._commandHistory, ..._activeWidget];
-  List<Map<String, dynamic>> get jsonData => _jsonData;
+  Map<String, dynamic> get jsonData => _jsonData;
+
+  final ProviderContainer themeContainer;
+
+  TermuxNotifier({required this.themeContainer});
 
   initWidget(Widget widget) async {
     await readJson();
@@ -50,7 +61,7 @@ class TermuxNotifier extends ChangeNotifier {
   }
 
   readJson() async {
-    final String response = await rootBundle.loadString('config.json');
+    final String response = await rootBundle.loadString('json/config.json');
     _jsonData = await json.decode(response);
   }
 
@@ -67,6 +78,7 @@ class TermuxNotifier extends ChangeNotifier {
       if (commandList.length == 1) {
         Commands enumCommand =
             EnumToString.fromString(Commands.values, command)!;
+        print(enumCommand);
         runCommand(enumCommand);
         return;
       }
@@ -77,7 +89,7 @@ class TermuxNotifier extends ChangeNotifier {
 
       runCommand(enumCommand,
           flag: commandList[1],
-          number: commandList.length > 2 ? commandList[2] : null);
+          action: commandList.length > 2 ? commandList[2] : null);
     } catch (e) {
       _commandHistory.add(
         ExecResponse(
@@ -92,16 +104,21 @@ class TermuxNotifier extends ChangeNotifier {
     }
   }
 
-  runCommand(Commands command, {String? flag, String? number}) {
+  runCommand(Commands command, {String? flag, String? action}) {
     Flags? flagCommand;
     int? num;
+    dynamic trigger;
 
     if (flag != null) {
       try {
         flag = flag.replaceAll('--', '');
         flagCommand = EnumToString.fromString(Flags.values, flag)!;
-        if (number != null) {
-          num = int.parse(number);
+        if (action == null) throw 'null';
+
+        if (command == Commands.socials) {
+          num = int.parse(action);
+        } else {
+          trigger = action;
         }
       } catch (e) {
         _commandHistory.add(
@@ -170,6 +187,31 @@ class TermuxNotifier extends ChangeNotifier {
               response: _jsonData['exec_resp']["contact"]["info"],
             ),
           );
+
+          break;
+        case Commands.theme:
+          _allowFlags([Flags.set], flagCommand, command);
+          final themeNotifier = themeContainer.read(themeProvider);
+
+          if (flagCommand == null) {
+            _commandHistory.add(
+              RichifyTextResp(
+                response: _jsonData['exec_resp']["theme"],
+              ),
+            );
+            _commandHistory.add(
+              ExecResponse(response: _jsonData['usage']["theme"]),
+            );
+          }
+
+          switch (flagCommand) {
+            case Flags.set:
+              if (trigger == null) throw command.name;
+              trigger = EnumToString.fromString(Themes.values, trigger);
+              themeNotifier.changeTheme(trigger);
+              break;
+            default:
+          }
 
           break;
         case Commands.socials:
