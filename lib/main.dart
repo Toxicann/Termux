@@ -28,11 +28,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    KColor? _activeColor =
-        widget.themeContainer.read(themeProvider.notifier).themeColor;
+  KColor? _activeColor;
 
+  @override
+  void initState() {
+    super.initState();
+    _activeColor =
+        widget.themeContainer.read(themeProvider.notifier).themeColor;
     widget.themeContainer.listen<ThemeNotifier>(
       themeProvider,
       (previous, next) {
@@ -41,7 +43,17 @@ class _MyAppState extends State<MyApp> {
         });
       },
     );
+  }
 
+  @override
+  void dispose() {
+    widget.themeContainer.dispose(); // Dispose the provider container
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     dynamic themeData = ThemeData(
       useMaterial3: true,
       primaryColor: _activeColor!.primaryColor.toColor(),
