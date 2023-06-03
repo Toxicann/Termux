@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/controller/theme.controller.dart';
 import 'package:portfolio/shared/colors.dart';
 
 import 'widgets/termux.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
 
   themeProd.read(themeProvider.notifier).init().then((_) {
     runApp(
