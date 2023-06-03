@@ -148,7 +148,8 @@ class TermuxNotifier extends ChangeNotifier {
       switch (command) {
         case Commands.clear:
           _disallowFlag(command, flagCommand);
-          _commandHistory.clear();
+          // _commandHistory.clear();
+          inspect(commandHistory);
           break;
         case Commands.help:
           _disallowFlag(command, flagCommand);

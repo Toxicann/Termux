@@ -4,10 +4,10 @@ class TabularResponse extends StatelessWidget {
   TabularResponse({super.key, required this.response});
 
   List response;
-  List<TableRow> tableRow = [];
 
   @override
   Widget build(BuildContext context) {
+    List<TableRow> tableRow = [];
     for (var element in response) {
       tableRow.add(
         TableRow(
