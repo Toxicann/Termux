@@ -6,7 +6,7 @@ class HostName extends StatelessWidget {
   });
 
   final String name = "guest";
-  final String host = "Toxicann.com";
+  final String host = "toxicann.github.io";
 
   @override
   Widget build(BuildContext context) {
