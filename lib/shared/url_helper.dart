@@ -1,8 +1,8 @@
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlHelper {
-  static urlLauncher(String url) async {
-    String urlHead = "https://www.";
+  static urlLauncher(String url, {bool addHead = true}) async {
+    String urlHead = addHead ? "https://www." : "";
 
     final Uri _url = Uri.parse('$urlHead${prepareUrl(url)}');
 

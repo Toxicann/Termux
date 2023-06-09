@@ -26,6 +26,7 @@ enum Commands {
   help,
   about,
   welcome,
+  resume,
   socials,
   contact,
   theme,
@@ -149,7 +150,6 @@ class TermuxNotifier extends ChangeNotifier {
         case Commands.clear:
           _disallowFlag(command, flagCommand);
           _commandHistory.clear();
-          inspect(commandHistory);
           break;
         case Commands.help:
           _disallowFlag(command, flagCommand);
@@ -166,6 +166,19 @@ class TermuxNotifier extends ChangeNotifier {
               response: _jsonData['exec_resp']["about"],
             ),
           );
+          break;
+        case Commands.resume:
+          _disallowFlag(command, flagCommand);
+          _commandHistory.add(
+            ExecResponse(
+              response: const [
+                "------LINK UNDER CONSTRUCTION-----------",
+                "Opening a link to my CV! Please Wait ...",
+              ],
+            ),
+          );
+          UrlHelper.urlLauncher(_jsonData['exec_resp']["resume"],
+              addHead: false);
           break;
         case Commands.welcome:
           _disallowFlag(command, flagCommand);
