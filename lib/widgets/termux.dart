@@ -13,24 +13,41 @@ class Termux extends ConsumerStatefulWidget {
 
 class _TermuxState extends ConsumerState<Termux> {
   final TextEditingController _cmdController = TextEditingController();
-  final FocusNode _myFocusNode = FocusNode();
+  final ScrollController _scrollController = ScrollController();
+  final FocusNode _focusNode = FocusNode();
+  final GlobalKey _key = GlobalKey();
 
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await ref.read(termuxProvider.notifier).initWidget(
             ActiveLine(
+              key: _key,
+              focusNode: _focusNode,
               textFieldController: _cmdController,
             ),
           );
     });
+
+    _focusNode.addListener(() {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _focusNode.requestFocus();
+        Scrollable.ensureVisible(
+          _key.currentContext!,
+          alignment: 0.5,
+          duration: const Duration(milliseconds: 300),
+        );
+      });
+    });
+
     super.initState();
   }
 
   @override
   void dispose() {
+    _scrollController.dispose();
     _cmdController.dispose();
-    _myFocusNode.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -42,11 +59,14 @@ class _TermuxState extends ConsumerState<Termux> {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      child: ListView.builder(
-        primary: true,
-        physics: const ScrollPhysics(),
-        itemCount: _termuxProvider.commandHistory.length,
-        itemBuilder: (context, index) => _termuxProvider.commandHistory[index],
+      // child: ListView.builder(
+      //   physics: const ScrollPhysics(),
+      //   controller: _scrollController,
+      //   itemCount: _termuxProvider.commandHistory.length,
+      //   itemBuilder: (context, index) => _termuxProvider.commandHistory[index],
+      // ),
+      child: SingleChildScrollView(
+        child: Column(children: _termuxProvider.commandHistory),
       ),
     );
   }

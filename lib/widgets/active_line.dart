@@ -9,9 +9,11 @@ class ActiveLine extends ConsumerWidget {
   const ActiveLine({
     super.key,
     required TextEditingController textFieldController,
+    required this.focusNode,
   }) : _textFieldController = textFieldController;
 
   final TextEditingController _textFieldController;
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,6 +25,7 @@ class ActiveLine extends ConsumerWidget {
             onTapOutside: (event) => {},
             controller: _textFieldController,
             autofocus: true,
+            focusNode: focusNode,
             style: Theme.of(context).textTheme.bodyMedium,
             onEditingComplete: () {
               var command = _textFieldController.text.trim();

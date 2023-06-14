@@ -7,7 +7,7 @@ import 'package:portfolio/shared/colors.dart';
 
 import 'widgets/termux.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
 
