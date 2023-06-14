@@ -22,7 +22,7 @@ jobs:
       - name: Build website
         # this is for github pages
         # run: flutter build web --web-renderer html --base-href="/Termux/" 
-        run: flutter build web --web-renderer html 
+        run: flutter build web --release
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
