@@ -45,6 +45,10 @@
                 "function": "- list all available commands"
             },
             {
+                "command": "resume",
+                "function": "- my professional CV / resume (WIP)"
+            },
+            {
                 "command": "socials",
                 "function": "- check out my socials"
             },
@@ -120,6 +124,7 @@
                 ]
             }
         ],
+        "resume": "https://app.flowcv.com/api/resumes/download?resumeId=6218e4323e18ef9b48bbbc4f&languageCode=en",
         "contact": {
             "info": [
                 {
